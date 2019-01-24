@@ -43,6 +43,7 @@ describe('Calendar', () => {
     testCalendar.add(lateevent);
     testCalendar.add(earlyevent);
     testCalendar.sort()
+    testCalendar.sortedUpcomingEvents();
     console.log(testCalendar.future)
     expect(testCalendar.future[0]).toBe(earlyevent)
   });

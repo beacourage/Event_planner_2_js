@@ -1,7 +1,7 @@
 class Calendar {
   constructor() {
     this.events = [];
-    this.future = [];
+    // this.future = [];
     }
 
   add(event) {
@@ -10,7 +10,7 @@ class Calendar {
 
   sort() {
     let events = this.events;
-    let future = this.future;
+    let future = [];
     let today = new Date;
 
     events.forEach(function(event) {
@@ -21,7 +21,6 @@ class Calendar {
     })
     return future;
   }
-
   // displayFuture() {
   //   let future = this.future;
   //   var str = '<ul style="list-style-type:none">'
@@ -47,4 +46,34 @@ class Calendar {
   document.getElementById("eventListing").innerHTML = str;
   }
 // Getting eventlisint and putting the str into it, putting our lofic into interface file
+
+
+
+ sortedUpcomingEvents() {
+   let futureevents = this.sort() ;
+   futureevents.sort((event1, event2) => {
+     let date1 = event1.getDateObject()
+     let date2 = event2.getDateObject()
+
+      // if date1<date2{
+      //   return -1;
+      // }
+      // if date1>date2{
+      //   return 1;
+      // }
+      // return 0;
+     return date1 - date2;
+   });
+   return futureevents;
+ }
+
+  elementToDisplay() {
+    let div = document.createElement('div');
+    this.sortedUpcomingEvents()/forEach((event) => {
+      let eventHtml = event.elementToDisplay();
+      div.appendChild(eventHtml);
+    })
+    return div
+  }
+
 }

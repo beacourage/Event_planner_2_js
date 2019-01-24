@@ -11,6 +11,8 @@ class Event {
   	return div;
   }
 
-  
-}
+  getDateObject() {
+    return Date.parse(this.date)
+  }
 
+}
