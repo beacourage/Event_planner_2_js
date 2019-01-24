@@ -30,35 +30,9 @@ describe('Calendar', () => {
     const pastEvent = new Event("JAG's Lido Party", "2018/08/19", "07:00")
     const anotherfutureEvent = new Event("JAG", "2019/03/18", "06:00")
     testCalendar.add(futureEvent)
-    // console.log(futureEvent) //** future event is definitely logged
     testCalendar.add(pastEvent)
-    // console.log(pastEvent) //** past event is definitely logged
-    // console.log(testCalendar.events) //** BOTH events are definitely added
-    // console.log(testCalendar.events[0].date) // Date comes out in 22/10/2019 format
-    // console.log(testCalendar.dateMatcher())
     testCalendar.sort()
-    console.log(testCalendar.future)
+    expect(testCalendar.future.length).toBe(1)
     expect(testCalendar.future[0].date).toBe("2019/10/23")
   })
 })
-
-
-
-// Get visibility on what is passed to Event object
-// when user creates event using the calendar
-// in short, does it append a string or a Date obj?
-
-// Is the toBe matcher adequate to deal with arrays?
-// Could it be something to do with the output of the sort function, in that it returns
-// an array rather than a string
-
-// c = new Calendar();
-// p = new Event("p desc", "01/01/2001", "01:00");
-// n = new Event("n desc", "22/01/2019", "01:00");
-// f = new Event("f desc", "22/10/2019", "01:00");
-
-// c.add(p);
-// c.add(f);
-// c.add(n);
-
-// console.log(c.sort());

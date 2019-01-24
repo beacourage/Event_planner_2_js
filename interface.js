@@ -12,21 +12,9 @@ submitButton.addEventListener('click', function(){
 
   calendar.add(eventNew);
 
-  display() ;
+  // display() ;
+
+  // calendar.sort()
+  calendar.listEvents()
+
 });
-
-const display = () => {
-	let eventsDiv = document.getElementById('eventListing');
-	events = calendar.elementToDisplay();
-	eventsDiv.innerHTML = "";
-	eventsDiv.appendChild(events);
-}
-
-
-  // let eventListing = document.getElementById('eventListing');
-
-  // let eventAdd = document.createElement("P");
-  // eventAdd.innerText = `${eventNew.description} \n ${eventNew.date} \n ${eventNew.time}`;
-
-  // eventListing.append(eventAdd);
-
