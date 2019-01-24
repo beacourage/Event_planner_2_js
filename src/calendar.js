@@ -69,7 +69,7 @@ class Calendar {
 
   elementToDisplay() {
     let div = document.createElement('div');
-    this.sortedUpcomingEvents()/forEach((event) => {
+    this.sortedUpcomingEvents().forEach((event) => {
       let eventHtml = event.elementToDisplay();
       div.appendChild(eventHtml);
     })

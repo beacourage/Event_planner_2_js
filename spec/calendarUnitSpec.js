@@ -31,9 +31,8 @@ describe('Calendar', () => {
     const anotherfutureEvent = new Event("JAG", "2019/03/18", "06:00")
     testCalendar.add(futureEvent)
     testCalendar.add(pastEvent)
-    // testCalendar.sort()
     let sortedEventsOutcome = testCalendar.sort();
-    // expect(sortedEventsOutcome[0].length).toBe(1)
+    expect(sortedEventsOutcome.length).toBe(1)
     expect(sortedEventsOutcome[0].date).toBe("2019/10/23")
   })
 
@@ -46,6 +45,7 @@ describe('Calendar', () => {
     // testCalendar.sort()
     let sortedEventsOutcome = testCalendar.sortedUpcomingEvents();
     expect(sortedEventsOutcome[0]).toBe(earlyevent)
+    expect(sortedEventsOutcome[1]).toBe(lateevent)
   });
 })
 
