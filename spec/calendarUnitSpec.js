@@ -31,9 +31,10 @@ describe('Calendar', () => {
     const anotherfutureEvent = new Event("JAG", "2019/03/18", "06:00")
     testCalendar.add(futureEvent)
     testCalendar.add(pastEvent)
-    testCalendar.sort()
-    expect(testCalendar.future.length).toBe(1)
-    expect(testCalendar.future[0].date).toBe("2019/10/23")
+    // testCalendar.sort()
+    let sortedEventsOutcome = testCalendar.sort();
+    // expect(sortedEventsOutcome[0].length).toBe(1)
+    expect(sortedEventsOutcome[0].date).toBe("2019/10/23")
   })
 
   it('displays events in chronological order', () => {
@@ -42,9 +43,10 @@ describe('Calendar', () => {
     const lateevent = new Event("BMC ROUND 2", "2019/09/19", "08:00");
     testCalendar.add(lateevent);
     testCalendar.add(earlyevent);
-    testCalendar.sort()
-    testCalendar.sortedUpcomingEvents();
-    console.log(testCalendar.future)
-    expect(testCalendar.future[0]).toBe(earlyevent)
+    // testCalendar.sort()
+    let sortedEventsOutcome = testCalendar.sortedUpcomingEvents();
+    expect(sortedEventsOutcome[0]).toBe(earlyevent)
   });
 })
+
+
