@@ -35,4 +35,15 @@ describe('Calendar', () => {
     expect(testCalendar.future.length).toBe(1)
     expect(testCalendar.future[0].date).toBe("2019/10/23")
   })
+
+  it('displays events in chronological order', () => {
+    const testCalendar = new Calendar;
+    const earlyevent = new Event("BMC BBQ: FUN TIMEZ", "2019/08/19", "08:00");
+    const lateevent = new Event("BMC ROUND 2", "2019/09/19", "08:00");
+    testCalendar.add(lateevent);
+    testCalendar.add(earlyevent);
+    testCalendar.sort()
+    console.log(testCalendar.future)
+    expect(testCalendar.future[0]).toBe(earlyevent)
+  });
 })
