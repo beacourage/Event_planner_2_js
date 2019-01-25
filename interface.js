@@ -20,12 +20,12 @@ submitButton.addEventListener('click', function(){
 
 const display = () => {
   let eventsDiv = document.getElementById('eventListing');
-  console.log(eventsDiv)
   events = calendar.elementToDisplay();
   eventsDiv.innerHTML = '';
   eventsDiv.appendChild(events);
   }
-  // calendar.sort()
-  // calendar.sortedUpcomingEvents()
 
 });
+
+
+// e6cae4e25c3c8e36bd72989d3623823e

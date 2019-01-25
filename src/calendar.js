@@ -6,9 +6,31 @@ class Calendar {
 
   add(event) {
     this.events.push(event);
+    let eventString = JSON.stringify(this.sortedUpcomingEvents())
+    console.log(eventString)
+    console.log(`testing` + this.sortedUpcomingEvents())
+    localStorage.setItem("Events", eventString)
+
   }
 
-  sort() {
+inStorage() {
+  if (!localStorage.getItem('Events')){
+    return []
+  } else {
+    return this.inflateEvents(JSON.parse(localStorage.getItem('Events')))
+  }
+}
+
+inflateEvents(jsonObject) {
+  let tempArray = [] ;
+  jsonObject.forEach((event) => {
+    var event = new Event(event.description, event.date, event.time)
+    tempArray.push(event)
+  })
+  return tempArray
+}
+
+sort() {
     let events = this.events;
     let future = [];
     let today = new Date;
@@ -21,36 +43,10 @@ class Calendar {
     })
     return future;
   }
-  // displayFuture() {
-  //   let future = this.future;
-  //   var str = '<ul style="list-style-type:none">'
-  //   future.forEach(function(event){
-  //     str += '<li>' + event.description + " on " + event.date +  " at " + event.time + '</li>';
-  //   });
-  //   str += '</ul>';
-  //   document.getElementById("eventListing").innerHTML = str;
-  // }
-
-  listEvents() {
-    let events = this.events;
-    let future = this.future;
-    let today = new Date;
-    var str = '<ul style="list-style-type:none">'
-
-    events.forEach(function(event) {
-    let userDate = new Date(event.date);
-      if  (userDate >= today) {
-    str += '<li>' + event.description + " on " + event.date +  " at " + event.time + '</li>';
-      } });
-  str += '</ul>';
-  document.getElementById("eventListing").innerHTML = str;
-  }
-// Getting eventlisint and putting the str into it, putting our lofic into interface file
-
-
-
- sortedUpcomingEvents() {
-   let futureevents = this.sort() ;
+    
+sortedUpcomingEvents() {
+   let futureEvents = this.sort()
+   
    futureevents.sort((event1, event2) => {
      let date1 = event1.getDateObject()
      let date2 = event2.getDateObject()
